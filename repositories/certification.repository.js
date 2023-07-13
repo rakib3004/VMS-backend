@@ -2,10 +2,11 @@ const Certification = require("../models/certification.model");
 
 exports.getCertificate = async (n_id) => {
   try {
-    const vaccination = await Certification.find({
+    const certificate = await Certification.find({
       n_id: n_id,
     });
-    return vaccination;
+    console.log(certificate[0]);
+    return certificate[0];
   } catch (error) {
     console.error("Error fetching certificate details:", error);
     throw error;

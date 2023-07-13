@@ -16,6 +16,18 @@ exports.getVaccine = async (vaccine_name) => {
   }
   return vaccineResponse;
 };
+
+exports.getVaccineNameByID = async (vaccine_id) => {
+  const vaccineResponse = await vaccineRepository.getVaccineNameByID(
+    vaccine_id
+  );
+
+  if (!vaccineResponse) {
+    throw new AppError("Vaccine not Found", 404);
+  }
+  return vaccineResponse;
+};
+
 exports.createVaccine = async (body) => {
   const vaccine_name = body.vaccine_name;
 

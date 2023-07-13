@@ -27,6 +27,19 @@ exports.getVaccine = async (vaccine_name) => {
   }
 };
 
+exports.getVaccineNameByID = async (vaccine_id) => {
+  try {
+    const vaccine = await Vaccine.find({
+      _id: vaccine_id,
+    });
+    console.log(vaccine);
+    return vaccine;
+  } catch (error) {
+    console.error("Error fetching vaccine details:", error);
+    throw error;
+  }
+};
+
 exports.createVaccine = async (vaccine_name) => {
   try {
     const vaccine = new Vaccine({
