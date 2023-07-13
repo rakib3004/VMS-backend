@@ -1,4 +1,4 @@
-const { Vaccination } = require("../models/index.model");
+const { Vaccination } = require("../models/vaccination.model");
 
 exports.getVaccination = async (user_id) => {
   try {

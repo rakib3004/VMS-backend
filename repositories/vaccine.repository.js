@@ -1,4 +1,4 @@
-const { Vaccine } = require("../models/index.model"); // Import your Mongoose model for Vaccine
+const { Vaccine } = require("../models/vaccine.model");
 
 exports.getRandomVaccine = async () => {
   try {
