@@ -1,5 +1,8 @@
 const vaccinationRepository = require("../repositories/vaccination.repository");
 const { AppError } = require("../utils/error.handler.util");
+const { getVaccinationDate } = require("../utils/vaccination.util");
+const vaccineService = require("../services/vaccine.service");
+const userService = require("../services/user.service");
 
 exports.getVaccination = async (user_id) => {
   const vaccinationResponse = await vaccinationRepository.getVaccination(
@@ -12,9 +15,11 @@ exports.getVaccination = async (user_id) => {
   return vaccinationResponse;
 };
 exports.createVaccination = async (body) => {
-  const user_id = body.user_id;
-  const vaccine_id = body.vaccine_id;
-  const vaccination_date = Date.now(); // implement vaccination date within 5 to 12 days
+  const n_id = body.n_id;
+  const user_id = userService.getUserByNID(n_id);
+  const vaccine = vaccineService.getVaccine();
+  const vaccine_id = vaccine._id;
+  const vaccination_date = getVaccinationDate();
 
   const vaccinationResponse = await vaccinationRepository.createVaccination(
     user_id,

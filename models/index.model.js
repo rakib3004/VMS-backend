@@ -27,7 +27,7 @@ const User = mongoose.model("User", userSchema);
 
 // Vaccine Schema
 const vaccineSchema = new Schema({
-  //   vaccine_id: { type: String, required: true },
+  vaccine_id: { type: String, required: true },
   vaccine_name: { type: String, required: true },
 });
 
@@ -35,8 +35,8 @@ const Vaccine = mongoose.model("Vaccine", vaccineSchema);
 
 // Vaccination Schema
 const vaccinationSchema = new Schema({
-  user_id: { type: Schema.Types.ObjectId, ref: "User", required: true },
-  vaccine_id: { type: Schema.Types.ObjectId, ref: "Vaccine", required: true },
+  user_id: { type: String, required: true },
+  vaccine_id: { type: String, required: true },
   vaccination_date: { type: Date, required: true },
 });
 
