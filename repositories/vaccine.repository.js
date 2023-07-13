@@ -8,9 +8,35 @@ exports.getRandomVaccine = async () => {
       throw new Error("No vaccine found");
     }
 
-    return randomVaccine[0];
+    return randomVaccine;
   } catch (error) {
     console.error("Error fetching random vaccine:", error);
     throw error;
+  }
+};
+
+exports.getVaccine = async (vaccine_name) => {
+  try {
+    const vaccine = await Vaccine.find({
+      vaccine_name: vaccine_name,
+    });
+    return vaccine;
+  } catch (error) {
+    console.error("Error fetching vaccine details:", error);
+    throw error;
+  }
+};
+
+exports.createVaccine = async (vaccine_name) => {
+  try {
+    const vaccine = new Vaccine({
+      vaccine_name: vaccine_name,
+    });
+
+    const newVaccine = await vaccine.save();
+    return newVaccine;
+  } catch (error) {
+    console.log(error);
+    // throw new Error("Database Error when creating user");
   }
 };

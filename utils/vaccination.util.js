@@ -10,12 +10,14 @@ const getVaccinationDate = async () => {
   const maxDate = new Date(today);
   maxDate.setDate(today.getDate() + maxDays);
 
-  const vaccinationDate = new Date(
-    minDate.getTime() + Math.random() * (maxDate.getTime() - minDate.getTime())
-  );
+  const vaccinationTimestamp =
+    minDate.getTime() + Math.random() * (maxDate.getTime() - minDate.getTime());
+  const vaccinationDate = new Date(vaccinationTimestamp);
 
-  return vaccinationDate;
+  const formattedDate = vaccinationDate.toLocaleDateString("en-GB");
+  return formattedDate;
 };
+getVaccinationDate();
 
 module.exports = {
   getVaccinationDate,

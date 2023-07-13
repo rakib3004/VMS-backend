@@ -3,6 +3,7 @@ const { AppError } = require("../utils/error.handler.util");
 const { getVaccinationDate } = require("../utils/vaccination.util");
 const vaccineService = require("../services/vaccine.service");
 const userService = require("../services/user.service");
+const mongoose = require("mongoose");
 
 exports.getVaccination = async (user_id) => {
   const vaccinationResponse = await vaccinationRepository.getVaccination(
@@ -16,10 +17,16 @@ exports.getVaccination = async (user_id) => {
 };
 exports.createVaccination = async (body) => {
   const n_id = body.n_id;
-  const user_id = userService.getUserByNID(n_id);
-  const vaccine = vaccineService.getVaccine();
-  const vaccine_id = vaccine._id;
-  const vaccination_date = getVaccinationDate();
+  const userObject = await userService.getUserByNID(n_id);
+
+  const user_id = userObject.user._id.toString();
+
+  //const vaccine = await vaccineService.getVaccine("Moderna");
+  const vaccine = await vaccineService.getRandomVaccine();
+
+  const vaccine_id = vaccine[0]._id.toString();
+
+  const vaccination_date = await getVaccinationDate();
 
   const vaccinationResponse = await vaccinationRepository.createVaccination(
     user_id,

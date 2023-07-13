@@ -12,22 +12,19 @@ exports.getVaccination = async (user_id) => {
   }
 };
 
-exports.createVaccination = async (
-  user_id,
-  vaccination_id,
-  vaccination_date
-) => {
+exports.createVaccination = async (user_id, vaccine_id, vaccination_date) => {
   try {
     const vaccination = new Vaccination({
       user_id: user_id,
-      vaccination_id: vaccination_id,
+      vaccine_id: vaccine_id,
       vaccination_date: vaccination_date,
     });
 
     const newVaccination = await vaccination.save();
+
     return newVaccination;
   } catch (error) {
     console.log(error);
-    // throw new Error("Database Error when creating user");
+    throw new Error("Database Error when creating user");
   }
 };
