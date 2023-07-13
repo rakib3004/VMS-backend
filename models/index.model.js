@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 // User Schema
 const userSchema = new Schema({
-  //   user_id: { type: String, required: true },
+  // user_id: { type: String, required: true },
   name: { type: String, required: true },
   address: { type: String, required: true },
   n_id: { type: String, required: true },

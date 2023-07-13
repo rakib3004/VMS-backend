@@ -1,36 +1,13 @@
 const { Vaccination } = require("../models/index.model");
 
-exports.createUser = async (name, address, n_id, password) => {
+exports.getVaccinationDate = async (user_id) => {
   try {
-    const singleUser = new User({
-      name: name,
-      address: address,
-      n_id: n_id,
-      password: password,
+    const vaccination = await Vaccination.find({
+      user_id: user_id,
     });
-
-    const newUser = await singleUser.save();
-    return newUser;
+    return vaccination;
   } catch (error) {
-    console.log(error);
-    // throw new Error("Database Error when creating user");
+    console.error("Error fetching vaccination details:", error);
+    throw error;
   }
-};
-
-exports.getUserByNID = async (n_id) => {
-  const user = await User.findOne({ n_id: n_id });
-  return user;
-};
-
-exports.updateUserByNID = async (name, address, n_id, password) => {
-  const user = await User.findOneAndUpdate(
-    { n_id: n_id },
-    {
-      name: name,
-      address: address,
-      password: password,
-    },
-    { new: true }
-  );
-  return user;
 };

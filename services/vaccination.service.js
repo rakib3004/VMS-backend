@@ -2,10 +2,9 @@ const vaccinationRepository = require("../repositories/vaccination.repository");
 const userNotFoundMessage = "User not found";
 const { AppError } = require("../utils/error.handler.util");
 
-exports.getVaccinationDate = async (n_id) => {
+exports.getVaccinationDate = async (user_id) => {
   const vaccinationResponse = await vaccinationRepository.getVaccinationDate(
-    user_id,
-    vaccine_id
+    user_id
   );
 
   if (!userResponse) {

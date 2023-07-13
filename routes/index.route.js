@@ -6,7 +6,7 @@ const vaccinationRouter = require("./vaccination.route");
 
 router.use("/auth", authRouter);
 router.use("/users", userRouter);
-router.use("/test", testRouter);
 router.use("/vaccination", vaccinationRouter);
+router.use("/test", testRouter);
 
 module.exports = router;

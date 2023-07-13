@@ -21,16 +21,3 @@ exports.getUserByNID = async (n_id) => {
   const user = await User.findOne({ n_id: n_id });
   return user;
 };
-
-exports.updateUserByNID = async (name, address, n_id, password) => {
-  const user = await User.findOneAndUpdate(
-    { n_id: n_id },
-    {
-      name: name,
-      address: address,
-      password: password,
-    },
-    { new: true }
-  );
-  return user;
-};
