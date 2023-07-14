@@ -23,10 +23,8 @@ exports.createUser = async (body) => {
 
 exports.getUserByNID = async (n_id) => {
   const userResponse = await userRepository.getUserByNID(n_id);
+  console.log("My NID", n_id);
 
-  if (!userResponse) {
-    throw new AppError(userNotFoundMessage, 404);
-  }
   const dtoUser = new UserDTO(userResponse);
   return dtoUser;
 };

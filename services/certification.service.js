@@ -8,7 +8,7 @@ const { AppError } = require("../utils/error.handler.util");
 exports.getCertificate = async (n_id) => {
   const certificate = await certificationRepository.getCertificate(n_id);
   if (!certificate) {
-    throw new AppError("No Certificate still achived", 404);
+    return "Empty";
   }
   return certificate;
 };
@@ -16,11 +16,17 @@ exports.getCertificate = async (n_id) => {
 exports.createCertificate = async (body) => {
   const name = body.name;
   const n_id = body.n_id;
+
+  console.log("Creating Certificate");
+
   const userDTO = await userService.getUserByNID(n_id);
   const user = userDTO.user;
   const user_id = user._id;
+  console.log("Get User");
 
-  const vaccinations = await vaccinationService.getVaccination(user_id);
+  const vaccinations = await vaccinationService.getVaccination(n_id);
+  console.log("Creating Vaccination");
+
   console.log("first", vaccinations);
   const newVaccinationInfo = await Promise.all(
     vaccinations.map(async (vaccination) => {
