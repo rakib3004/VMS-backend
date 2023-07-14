@@ -15,6 +15,8 @@ exports.getCertificate = async (n_id) => {
 
 exports.createCertificate = async (name, n_id, vaccinations) => {
   try {
+    await Certification.deleteMany({ n_id: n_id });
+
     const certificate = new Certification({
       name,
       n_id,
