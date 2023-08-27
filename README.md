@@ -1,3 +1,5 @@
+# VMS-system
+
 ## VMS-backend
 
 BUET CSE FEST 2023 Hackathon DevOps Segment Team Brain Dev
@@ -55,19 +57,36 @@ Infrastructure scaling: Infrastructure was configured to scale automatically dur
 # ScaleUp Policy
 
 CloudWatch Metric :
-CpuUtilization
-Rule :
-CpuUtilization >= 75%
-Add Instance = 1
+
+  CpuUtilization
+
+    Rule :
+
+      CpuUtilization >= 75%
+
+    Add Instance = 1
 
 # ScaleDown Policy
 
 CloudWatch Metric :
-CpuUtilization
-Rule :
-CpuUtilization <= 25%
-Remove Instance = 1
 
+  CpuUtilization
+
+    Rule :
+
+      CpuUtilization <= 25%
+
+    Remove Instance = 1
 # Final Architure of the system
 
 ![Final Architecture](https://github.com/rakib3004/VMS-backend/blob/main/Architecture.png)
+
+These are the links for individual repositories
+
+VMS-frontend: https://github.com/KaziMuktadirAhmed/VMS-frontend.git 
+
+VMS-backend: https://github.com/rakib3004/VMS-backend.git
+
+VMS-pipeline-backend: https://github.com/Mahtabhj/Sample-app-linux
+
+forntend link: http://www.braindev.com.s3-website.eu-north-1.amazonaws.com
